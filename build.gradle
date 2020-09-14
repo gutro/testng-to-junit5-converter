@@ -1,0 +1,54 @@
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.17'
+    id "org.asciidoctor.jvm.convert" version "3.1.0"
+}
+
+group 'com.gearsofleo'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.testng:testng:6.8.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.0'
+    testRuntime 'org.junit.vintage:junit-vintage-engine:5.6.0'
+}
+
+wrapper {
+    gradleVersion = "6.3"
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+asciidoctor {
+    sourceDir file('.')
+    outputDir file('build/docs')
+    options header_footer: false
+    sources {
+        include 'CHANGELOG.adoc', 'README.adoc'
+    }
+}
+
+intellij {
+    version '2020.2.1'
+    updateSinceUntilBuild = false
+    plugins = ['java']
+}
+
+patchPluginXml {
+
+    dependsOn asciidoctor
+    changeNotes = {
+        (file('build/docs/CHANGELOG.html').text)
+    }
+    pluginDescription = {
+        (file('build/docs/README.html').text)
+    }
+}
+

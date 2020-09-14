@@ -1,0 +1,9 @@
+
+=== 0.0.1
+
+- `@Test(enabled=false)` => `@Disabled`
+- `@BeforeClass` / `@AfterClass` => `@BeforeAll` / `@AfterAll`
+- `@BeforeMethod` / `@AfterMethod` => `@BeforeEach` / `@AfterEach`
+- `@Test(expectedExceptions = Exception.class)` => `assertThrows(...)`
+- `@Test(expectedExceptions = Exception.class, expectedExceptionsMessageRegExp = "")` => `assertThrows(...)` + `assertThat(e.getMessage(), matchesPattern(""))`
+- Exchanges `Assert`, `AssertJUnit` and `ArrayAsserts` with `Assertions` functions

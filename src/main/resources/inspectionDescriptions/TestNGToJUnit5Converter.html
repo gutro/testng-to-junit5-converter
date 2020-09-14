@@ -1,0 +1,25 @@
+<html>
+<body>
+<p>
+    Detects TestNG test cases that can be converted to JUnit 5.
+</p>
+<p>
+    This inspection detects <b>all</b> TestNG test cases as sources for migration to JUnit 5.
+    In many cases the class cannot be completely converted automatically into a fully functional
+    JUnit 5 test case, but the inspection will suggest a quickfix to do the bulk of the changes,
+    and leave the final bits and pieces for manual fixing.
+</p>
+<p>
+    The quick fix will convert assertions to JUnit 5 assertions. It will also swap argument
+    order of expected & actual arguments, unless AssertJUnit or ArrayAsserts is used.
+    Also Before/After-annotations are migrated, but be aware that JUnit 5 essentially requires
+    BeforeAll/AfterAll-annotated methods to be static, which they might not be in the original
+    TestNG tests.<br/>
+    The quick fix will also prepare for removal of inheritance by adding @Transactional annotation
+    to the test class if it is present on any super class. Also @ContextConfiguration will be
+    replaced with @SpringBootTest if spring-boot-test is available on the class path.
+</p>
+<!-- tooltip end -->
+<p></p>
+</body>
+</html>

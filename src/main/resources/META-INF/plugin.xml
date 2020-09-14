@@ -1,0 +1,28 @@
+<idea-plugin>
+  <id>com.gearsofleo.intellij.testng.converter.plugin</id>
+  <name>TestNG To Junit 5 Converter</name>
+  <vendor url="https://github.com/gutro/Hyraco/tree/PLAT-2580_Unicorn/tools/testng-to-junit5-converter/">
+    TestNG to Junit 5 converter plugin
+  </vendor>
+  <depends>com.intellij.modules.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <localInspection groupPath="Java"
+                     groupName="TestNG"
+                     displayName="Convert TestNG assertion to JUnit 5"
+                     language="JAVA"
+                     enabledByDefault="true"
+                     cleanupTool="true"
+                     level="WARNING"
+                     implementationClass="com.gearsofleo.intellij.testng.converter.plugin.assertion.TestNGToJUnit5AssertionsConverterInspection"/>
+
+    <localInspection groupPath="Java"
+                     groupName="TestNG"
+                     displayName="Convert TestNG tests to JUnit 5"
+                     language="JAVA"
+                     enabledByDefault="true"
+                     cleanupTool="true"
+                     level="WARNING"
+                     implementationClass="com.gearsofleo.intellij.testng.converter.plugin.testcase.TestNGToJUnit5ConverterInspection"/>
+  </extensions>
+</idea-plugin>
