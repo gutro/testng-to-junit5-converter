@@ -37,7 +37,6 @@ asciidoctor {
 
 intellij {
     version '2020.2.1'
-    updateSinceUntilBuild = false
     plugins = ['java']
 }
 
